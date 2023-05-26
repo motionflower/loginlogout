@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>Homepage <div><span class="usersCount"></span> User(s)</div></nav>
+    </header>
+
+    <main>
+
+        <section class="formsSection">
+            <div class="signup">
+                <h1>
+                    Sign up
+                </h1>
+                <form id="signup">
+                    <label id="email-label" for="email">Email</label>
+                    <input name="email" id="email" type="email" required placeholder="Your email" />
+                    <label id="password-label" for="password">Password</label>
+                    <input name="password" id="password" type="password" required placeholder="Your password">
+                    <input type="submit" value="Submit" id="submit" />
+                    
+                </form>
+            </div>
+            <div class="signin">
+                <h1>
+                Log in
+            </h1>
+            <form id="login">
+                <label id="login-email-label" for="email">Email</label>
+                <input name="email" id="login-email" type="email" required placeholder="Your email" />
+                <label id="login-password-label" for="password">Password</label>
+                <input name="password" id="login-password" type="password" required placeholder="Your password">
+                <input type="submit" value="Submit" id="login-submit" />
+            </form>
+            </div>
+                
+            
+        </section>
+
+        <section class="profileSection">
+            <div class="signedInTop">
+                <span>Logged in as <span class="userEmail"></span></span>
+                <span> favorite number: <span class="userNumber"></span>
+                <button class="logoutButton">Log Out</button>
+            </div>
+
+            <div class="signedin">
+                <form id="signedin">
+                    <label id="favnumber" for="number">Your favorite number is:</label>
+                    <input name="number" id="number" type="number" placeholder="e.g. 5" required />
+                    <input type="submit" value="Save" id="submitProfile" />
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <!-- Empty -->
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

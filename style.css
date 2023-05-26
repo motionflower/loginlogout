@@ -1,0 +1,65 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --mainBG: rgba(19,16,91,1);
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Oswald", sans-serif;
+  background: linear-gradient(180deg, var(--mainBG) 0%, rgb(218, 187, 187) 100%);
+}
+
+header {
+  background: white;
+  display: flex;
+  padding: 1em 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.formsSection .signup, .formsSection .signin {
+  width: 200px;
+  margin: 50px auto;
+  display: flex;
+  padding: 3em 0 5em;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-gap: 15px;
+  border-radius: 4px;
+  color: rgb(45, 41, 85);
+  transition: 150ms ease-in-out;
+  border: 3px solid var(--mainBG);
+  background: rgb(243, 243, 255);
+}
+.formsSection .signup form, .formsSection .signin form {
+  display: flex;
+  grid-gap: 5px;
+  flex-direction: column;
+}
+
+.profileSection {
+  display: flex;
+  color: white;
+  padding: 15px;
+  flex-direction: column;
+  grid-gap: 15px;
+}
+.profileSection .signedInTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divider {
+  border-bottom: 1px solid #888989;
+  margin: 2px 0;
+}/*# sourceMappingURL=style.css.map */
