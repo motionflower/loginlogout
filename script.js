@@ -2,6 +2,8 @@
 let users = JSON.parse(localStorage.getItem(`users`)) || []; // Array of Users
 let user = JSON.parse(localStorage.getItem(`user`)); 
 
+
+
 // functions for ES5
 // function getDom(selector) {
 //     return document.querySelector(selector);
@@ -10,6 +12,12 @@ let user = JSON.parse(localStorage.getItem(`user`));
 // arrow functions for ES6
 const getDom = (selector) => document.querySelector(selector);
 const conLog = (labelAsAString, item) => console.log(labelAsAString, item);
+
+// hide forms
+const hideSignUpForm = () => getDom(`.signup`).style.display = `none`;
+const hideSignInForm = () => getDom(`.signin`).style.display = `none`;
+// submit buttons that hide forms
+hideSignInForm();
 
 // the next few variables are HTML references
 let signupForm = getDom(`#signup`);
@@ -80,7 +88,10 @@ const addNewUser = (newUser) => {
     localStorage.setItem(`users`, JSON.stringify(users));
 }
 
+// buttons
 let logoutButton = getDom(`.logoutButton`);
+let loginpageButton = getDom(`.button-3`);
+let createaccountButton = getDom(`.button-1`);
 
 if (logoutButton) {
     logoutButton.addEventListener(`click`, LogOutClickEvent => {
@@ -89,6 +100,21 @@ if (logoutButton) {
         logUserOut();
     });
 }
+
+if (loginpageButton) {
+    loginpageButton.addEventListener(`click`, LogInClickEvent => {
+        hideSignUpForm();
+        getDom(`.signin`).style.display = `flex`;
+    });
+}
+
+if (createaccountButton) {
+    createaccountButton.addEventListener(`click`, CreateAccountClickEvent => {
+        hideSignInForm();
+        getDom(`.signup`).style.display = `flex`;
+    });
+}
+
 
 if (signupForm) {
     signupForm.addEventListener(`submit`, SignUpFormSubmitEvent => {
@@ -114,7 +140,8 @@ if (signupForm) {
                 alert(`Hey, you're already registered, we are sending you to the log in form.`);
                 // implement login logic here
                 // we have already captured the user email 
-                getDom(`.signup`).style.display = `none`;
+                hideSignUpForm();
+                getDom(`.signin`).style.display = `flex`;
                 getDom(`#login-email`).value = newUser.email;
                 // next we need to verify the password 
                 return;
@@ -155,6 +182,7 @@ if (loginForm) {
                 return;
             }
         } else {
+            alert(`No account was found with this email, please sign up`);
             getDom(`.signup`).style.display = `flex`;
             getDom(`.signin`).style.display = `none`;
             getDom(`#password`).value = "";
