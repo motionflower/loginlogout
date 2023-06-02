@@ -5,7 +5,7 @@
 }
 
 :root {
-  --mainBG: rgba(19,16,91,1);
+  --mainBG: #e7ae75;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Oswald", sans-serif;
-  background: linear-gradient(180deg, var(--mainBG) 0%, rgb(218, 187, 187) 100%);
+  background: linear-gradient(180deg, var(--mainBG) 0%, #e47ca4 100%);
 }
 
 header {
@@ -25,25 +25,36 @@ header {
   align-items: center;
 }
 
+input {
+  width: 100%;
+  height: 2.5em;
+}
+
 .formsSection .signup, .formsSection .signin {
   width: 200px;
   margin: 50px auto;
   display: flex;
-  padding: 3em 0 5em;
+  padding: 2em 0 2.5em;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   grid-gap: 15px;
-  border-radius: 4px;
-  color: rgb(45, 41, 85);
+  border-radius: 1em;
+  color: rgb(52, 52, 52);
   transition: 150ms ease-in-out;
-  border: 3px solid var(--mainBG);
-  background: rgb(243, 243, 255);
+  border: 1px solid var(--mainBG);
+  background: rgba(255, 255, 255, 0.423);
 }
 .formsSection .signup form, .formsSection .signin form {
   display: flex;
   grid-gap: 5px;
   flex-direction: column;
+}
+
+input {
+  border-radius: 8px;
+  border-style: none;
+  width: 170px;
 }
 
 .profileSection {
@@ -61,5 +72,110 @@ header {
 
 .divider {
   border-bottom: 1px solid #888989;
-  margin: 2px 0;
+  padding: 2px 0;
+  margin: 0px 0;
+}
+
+/* create account button */
+.button-1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  width: 140px;
+  align-items: center;
+  line-height: 1px;
+  list-style: none;
+  margin: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #e86195;
+}
+
+/* submit button */
+.button-2 {
+  background-color: #4c4cea;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 8px;
+  border-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  height: 30px;
+  width: 170px;
+  align-items: center;
+  line-height: 1px;
+  list-style: none;
+  margin: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-2:hover,
+.button-2:focus {
+  background-color: #5f5fe9;
+}
+
+/* already have an account button */
+.button-3 {
+  background-color: #ee9338;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  width: 140px;
+  align-items: center;
+  line-height: 1px;
+  list-style: none;
+  margin: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-3:hover,
+.button-3:focus {
+  background-color: #ed9f52;
 }/*# sourceMappingURL=style.css.map */
