@@ -2,16 +2,10 @@
 let users = JSON.parse(localStorage.getItem(`users`)) || []; // Array of Users
 let user = JSON.parse(localStorage.getItem(`user`)); 
 
-
-
-// functions for ES5
-// function getDom(selector) {
-//     return document.querySelector(selector);
-// }
-
 // arrow functions for ES6
 const getDom = (selector) => document.querySelector(selector);
-const conLog = (labelAsAString, item) => console.log(labelAsAString, item);
+const getDomAll = (selector) => document.querySelectorAll(selector);
+const conLog = (firstItemToLog, secondItemToLog) => secondItemToLog ? console.log(firstItemToLog, secondItemToLog) : console.log(firstItemToLog);
 
 // hide forms
 const hideSignUpForm = () => getDom(`.signup`).style.display = `none`;
@@ -28,47 +22,85 @@ let signedinForm = getDom(`form#signedin`);
 
 if (usersCount) usersCount.innerHTML = users.length;
 
-if (user) {
-    getDom(`.formsSection`).remove();
-    getDom(`.userEmail`).append(user.email);
-
+const checkUserData = (user) => {
     if (user.number) {
         // this is when the page first loads, it displays the number
         let userNumberElement = getDom(`.userNumber`);
         userNumberElement.innerHTML = user.number;
     }
 
+    if ((!user.status || user.status == ``) && (!user.occupation || user.occupation == ``)) {
+        getDom(`.userMeta`).style.display = `none`;
+    } else {
+        getDom(`.userMeta`).style.display = `flex`;
+    }
+
+    if (user.status) {
+        getDom(`.statusDisplay`).innerHTML = user.status;
+        getDom(`.statusDisplay`).style.display = `flex`;
+        getDom(`.displayField.status`).style.display = `flex`;
+    } else {
+        getDom(`.displayField.status`).style.display = `none`;
+    }
+    
+    if (user.occupation) {
+        getDom(`.occupationDisplay`).innerHTML = user.occupation;
+        getDom(`.occupationDisplay`).style.display = `flex`;
+        getDom(`.displayField.occupation`).style.display = `flex`;
+    } else {
+        getDom(`.displayField.occupation`).style.display = `none`;
+    }
+}
+
+const updateUserUI = (formFields, user) => {
+    // we need to get every update form field and update the UI with the new values
+    let formFieldDisplays = getDomAll(`.formFieldDisplay`);
+    formFieldDisplays.forEach((display, displayIndex) => {
+        if (formFields[displayIndex].value != ``) {
+            if (display.classList.contains(formFields[displayIndex].name)) {
+                display.innerHTML = formFields[displayIndex].value;
+            } 
+        }
+    })
+    checkUserData(user);
+}
+
+// this code will run on page load but we need to also update after the user submits the form
+if (user) {
+    getDom(`.formsSection`).remove();
+    getDom(`.userEmail`).append(user.username ?? user.email);
+
+    checkUserData(user);
+
     if (signedinForm) {
         // Create a new function to update the users profile
         signedinForm.addEventListener(`submit`, SignedInFormSubmitEvent => {
             SignedInFormSubmitEvent.preventDefault();
-            let numberField = getDom(`#number`);
-            if (numberField.value) {
-                // Update the current logged in user
-                user = {
-                    ...user,
-                    number: numberField.value
-                };
-                localStorage.setItem(`user`, JSON.stringify(user));
-                // And Update our User Base to have the Updated User
-                if (users.length > 0) {
-                    // We have update the user above
-                    // now we need to check if the user that we updated above already exists in our users database
-                    users = users.map((User, i) => {
-                        if (User.id == user.id) {
-                           return {
-                            ...User,
-                            number: numberField.value
-                           } 
-                        }
-                        return User;
-                    });
-                    localStorage.setItem(`users`, JSON.stringify(users));
-                    // this is for when the user updates number after page loads
-                    let userNumberElement = getDom(`.userNumber`);
-                    userNumberElement.innerHTML = user.number;
+            let formFields = getDomAll(`.formField`);
+
+            Object.assign(user, ...([...formFields].map(field => {
+                if (field.value != ``) {
+                    return {
+                        [field.name]: field.value
+                    }
                 }
+            })))
+
+            localStorage.setItem(`user`, JSON.stringify(user));
+
+            // And Update our User Base to have the Updated User
+            if (users.length > 0) {
+                // We have updated the user above
+                // now we need to check if the user that we updated above already exists in our users database
+                users = users.map((User, i) => {
+                    if (User.id == user.id) {
+                        return user;
+                    }
+                    return User;
+                });
+                localStorage.setItem(`users`, JSON.stringify(users));
             }
+            updateUserUI(formFields, user);
         })
     }
 } else {
@@ -125,9 +157,12 @@ if (signupForm) {
         let emailField = getDom(`#email`);
         let passwordField = getDom(`#password`);
 
+        let year = new Date().getFullYear();
+        let uniqueID = users.length + 1 + `-` + year;
+        // Create new user
         // When i have the email and password, i need to create a new user from it
         let newUser = {
-            id: users.length + 1,
+            id: uniqueID,
             email: emailField.value,
             password: passwordField.value
         };
