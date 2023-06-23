@@ -51,10 +51,24 @@ input {
   flex-direction: column;
 }
 
+form#signedin {
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 8px;
+}
+form#signedin input {
+  width: 100%;
+}
+
 input {
   border-radius: 8px;
   border-style: none;
   width: 170px;
+  padding: 15px;
+}
+input[type=submit] {
+  padding-bottom: 30px;
 }
 
 .profileSection {
@@ -68,6 +82,10 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.profileSection .signedin {
+  padding: 20px 50px;
+  display: flex;
 }
 
 .divider {

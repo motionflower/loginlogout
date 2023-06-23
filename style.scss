@@ -31,38 +31,50 @@
     height: 2.5em;
   }
  
- .formsSection {
-     
-     .signup, .signin {
-         // text-align: center;
-         // height: 200px;
- 
-         width: 200px;
-         margin: 50px auto;
-         display: flex;
-         padding: 2em 0 2.5em;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         grid-gap: 15px;
-         border-radius: 1em;
-         color: rgb(52, 52, 52);
-         transition: 150ms ease-in-out;
-         border: 1px solid var(--mainBG);
-         background: rgba(255, 255, 255, 0.423);
- 
-         form {
-             display: flex;
-             grid-gap: 5px;
-             flex-direction: column;
-         }
-     }
+ .formsSection {   
+    .signup, .signin {
+      width: 200px;
+      margin: 50px auto;
+      display: flex;
+      padding: 2em 0 2.5em;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      grid-gap: 15px;
+      border-radius: 1em;
+      color: rgb(52, 52, 52);
+      transition: 150ms ease-in-out;
+      border: 1px solid var(--mainBG);
+      background: rgba(255, 255, 255, 0.423);
+
+      form {
+        display: flex;
+        grid-gap: 5px;
+        flex-direction: column;   
+      }
+    }
+ }
+
+ form {
+  &#signedin {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    input {
+      width: 100%;
+    }
+  }
  }
 
  input {
   border-radius: 8px;
   border-style: none;
   width: 170px;
+  padding: 15px;
+  &[type="submit"] {
+    padding-bottom: 30px;
+  }
  }
  
  .profileSection {
@@ -71,10 +83,16 @@
      padding: 15px;
      flex-direction: column;
      grid-gap: 15px;
+
      .signedInTop {
-         display: flex;
+         display: flex; 
          justify-content: space-between;
          align-items: center;
+     }
+
+     .signedin {
+      padding: 20px 50px;
+      display: flex;
      }
  }
 

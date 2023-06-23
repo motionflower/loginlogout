@@ -53,15 +53,33 @@
 
         <section class="profileSection">
             <div class="signedInTop">
-                <span>Logged in as <span class="userEmail"></span></span>
-                <span> favorite number: <span class="userNumber"></span>
+                <span class="displayField username email">Logged in as <span class="userEmail formFieldDisplay username email"></span></span>
+                <span class="displayField number">Favorite number: <span class="userNumber formFieldDisplay number"></span></span>
                 <button class="logoutButton">Log Out</button>
+            </div>
+            <div class="signedInTop userMeta">
+                <span class="displayField status">Status: <span class="statusDisplay formFieldDisplay status"></span></span>
+                <span class="displayField occupation">Occupation: <span class="occupationDisplay formFieldDisplay occupation"></span></span>
             </div>
 
             <div class="signedin">
                 <form id="signedin">
-                    <label id="favnumber" for="number">Your favorite number is:</label>
-                    <input name="number" id="number" type="number" placeholder="e.g. 5" required />
+                    <!-- <label id="username" for="username">Your username is:</label> -->
+                    <input class="formField" name="username" id="username" type="username" placeholder="Enter your username" />
+                    <!-- <br>
+                    <br> -->
+                    <!-- <label id="favnumber" for="number">Your favorite number is:</label> -->
+                    <input class="formField" name="number" id="number" type="number" placeholder="Enter your favorite number" />
+                    <!-- <br>
+                    <br> -->
+                    <!-- <label id="status" for="status">Your status is:</label> -->
+                    <input class="formField" name="status" id="status" type="status" placeholder="Enter your status" />
+                    <!-- <br>
+                    <br> -->
+                    <!-- <label id="occupation" for="occupation">Enter your occupation:</label> -->
+                    <input class="formField" name="occupation" id="occupation" type="occupation" placeholder="Enter your occupation" />
+                    <!-- <br>
+                    <br> -->
                     <input type="submit" value="Save" id="submitProfile" />
                 </form>
             </div>
